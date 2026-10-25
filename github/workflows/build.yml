@@ -1,0 +1,35 @@
+name: Build Leader Packs
+
+on:
+workflow_dispatch:
+push:
+branches: [main, master]
+
+jobs:
+build:
+runs-on: windows-latest
+steps:
+- name: Checkout
+uses: actions/checkout@v4
+
+```
+  - name: Setup .NET
+    uses: actions/setup-dotnet@v4
+    with:
+      dotnet-version: '8.0.x'
+
+  - name: Add BepInEx package source
+    run: dotnet nuget add source https://nuget.bepinex.dev/v3/index.json --name BepInEx
+
+  - name: Restore
+    run: dotnet restore LeaderPacks.csproj
+
+  - name: Build
+    run: dotnet build LeaderPacks.csproj -c Release
+
+  - name: Upload DLL
+    uses: actions/upload-artifact@v4
+    with:
+      name: LeaderPacks-DLL
+      path: bin/Release/net472/LeaderPacks.dll
+```

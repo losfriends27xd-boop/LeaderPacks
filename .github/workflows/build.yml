@@ -3,7 +3,8 @@ name: Build Leader Packs
 on:
 workflow_dispatch:
 push:
-branches: [main, master]
+branches:
+- main
 
 jobs:
 build:
@@ -18,7 +19,7 @@ uses: actions/checkout@v4
     with:
       dotnet-version: '8.0.x'
 
-  - name: Add BepInEx package source
+  - name: Add BepInEx source
     run: dotnet nuget add source https://nuget.bepinex.dev/v3/index.json --name BepInEx
 
   - name: Restore

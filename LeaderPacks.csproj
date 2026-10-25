@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <AssemblyName>LeaderPacks</AssemblyName>
+    <RootNamespace>LeaderPacksAOC</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Core" Version="5.4.23.2" />
+    <PackageReference Include="AgesOfConflict.GameLibs" Version="*" />
+  </ItemGroup>
+</Project>
